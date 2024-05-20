@@ -6,13 +6,14 @@ import Total from './Total';
 
 export const Cart = ({price}) => {
   let [cartVal,setCartVal] = useState(0)
-  let {total,setTotalPrice} = useContext(CartContext)
+  let {total,setTotalPrice,cartValue,updateCartVal} = useContext(CartContext)
   return (
     <>
       <div className="cart">
             <h6 className="cartItem" title='Add Item' onClick={()=>{
               setTotalPrice(total +price)
               setCartVal(cartVal+1)
+              updateCartVal(cartValue+1)
               console.log("after +",total)
               }}><AddIcon/></h6>
             <h6 className="cartValue">{cartVal}</h6>
@@ -20,6 +21,7 @@ export const Cart = ({price}) => {
               if(cartVal>0){
                   setTotalPrice(total-price)
                   setCartVal(cartVal-1)
+                  updateCartVal(cartValue-1)
                   console.log("after -",total)
               }
               // cartVal>0?setCartVal(cartVal-1):setCartVal(0)

@@ -8,8 +8,10 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import Total from './Total';
+import CartContext from '../utils/CartContext';
 
 export default function NavBar() {
+  let {total,cartValue} = React.useContext(CartContext)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -21,11 +23,22 @@ export default function NavBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <ShoppingCartIcon />
+            <ShoppingCartIcon />Cartpage
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            CartPage
+            
           </Typography>
+          <IconButton
+            size="large" 
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <ShoppingCartIcon />
+            <Typography  variant="h6" component="div" sx={{ flexGrow: 1 }}>
+             <p>{cartValue}</p>
+          </Typography>
+          </IconButton>
           <IconButton
             size="large"
             edge="end"
@@ -34,7 +47,7 @@ export default function NavBar() {
             sx={{ mr: 2 }}
           ><CurrencyRupeeIcon />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-             <Total/>
+             <p>{total}</p>
           </Typography>
           </IconButton>
         </Toolbar>
